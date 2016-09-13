@@ -4,7 +4,7 @@
 
 const Util = (()=> {
     let util = {
-        getUID(prefix) {
+        getUID(prefix:string) {
             do {
                 prefix += ~~(Math.random() * 1000000)
             } while (document.getElementById(prefix));

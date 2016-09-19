@@ -1,0 +1,36 @@
+.turnplate{
+    position: relative;
+    width: 455px;
+    height: 455px;
+    margin: auto;
+    overflow: hidden;
+}
+.turnplate-bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.turnplate .img {
+    width: 100%;
+    height: 100%;
+}
+.turnplate-pointer{
+     width: 174px;
+     height: 228px;
+     position: absolute;
+     left: 50%;
+     top: 50%;
+     margin-left: -87px;
+     margin-top: -138px;
+     z-index: 8;
+    cursor: pointer;
+ }
+.turnplate-plate{
+    position: absolute;
+     width: 420px;
+     height: 420px;
+    left: 50%;
+    top: 50%;
+    margin-left: -210px;
+    margin-top: -210px;
+ }

@@ -19,11 +19,11 @@ const Util = (()=> {
             return (obj[0] || obj).nodeType;
         },
         autoPrefix(obj){
-
-            var prefixes = ['-webkit-', '-moz-', '-o-', '-ms-'];
+            var prefixes = ['-webkit-', '-moz-', '-o-', '-ms-'],
+                props = ['transform','transition'];
 
             $.each(obj, function (key, val) {
-                if(key == 'transform' || key == 'transition'){
+                if(~props.indexOf(key)){
                     $.each(prefixes, function (i, v) {
                         obj[v + key] = val;
                     });

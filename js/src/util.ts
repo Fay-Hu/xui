@@ -17,6 +17,20 @@ const Util = (()=> {
 
         isElement(obj) {
             return (obj[0] || obj).nodeType;
+        },
+        autoPrefix(obj){
+
+            var prefixes = ['-webkit-', '-moz-', '-o-', '-ms-'];
+
+            $.each(obj, function (key, val) {
+                if(key == 'transform' || key == 'transition'){
+                    $.each(prefixes, function (i, v) {
+                        obj[v + key] = val;
+                    });
+                }
+            });
+
+            return obj;
         }
     };
     return util; 

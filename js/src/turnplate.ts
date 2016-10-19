@@ -28,7 +28,7 @@ const Turnplate = (($)=> {
          $plate:$;
          $pointer:$;
          angle;
-         options : any;
+         options : {};
          isAnimating :boolean;
 
         public static defaults = {
@@ -42,7 +42,7 @@ const Turnplate = (($)=> {
             handleDisable:$.noop
         };
 
-        constructor(element: $,options:any ) {
+        constructor(element: $,options:{}) {
             this.element = element;
             this.$plate = this.element.find(SELECTOR.plate);
             this.$pointer = this.element.find(SELECTOR.pointer);

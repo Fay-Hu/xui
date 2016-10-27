@@ -6,6 +6,7 @@ const Wave = (($)=> {
     const DATA_KEY = 'x.wave';
     const EVENT_KEY = `.${DATA_KEY}`;
 
+    //缓动函数
     const easeInOut = function(t, b, c, d) {
         if ((t /= d / 2) < 1) return c / 2 * t * t + b;
         return -c / 2 * ((--t) * (t-2) - 1) + b;
@@ -31,8 +32,17 @@ const Wave = (($)=> {
             this.$stage = $(document.createElement('canvas'));
             this.options = $.extend({}, Wave.defaults, options);
 
-            this.devicePixelRatio = devicePixelRatio || 1; //drp值
+            this.devicePixelRatio = devicePixelRatio || 1; //dpr值
 
+            this.context = this.$stage[0].getContext('2d');
+
+            this.init();
+            this.$stage.appendTo(this.element);
+            this.run();
+
+        }
+        
+        private init(){
             this.width = this.devicePixelRatio * this.element.width();
             this.height =this.devicePixelRatio * this.element.height();
 
@@ -46,28 +56,19 @@ const Wave = (($)=> {
                 height : this.element.height/devicePixelRatio
             });
 
-            this.context = this.$stage[0].getContext('2d');
-            this.init();
-
-        }
-        
-        private init(){
-            this.$stage.appendTo(this.element);
-            this.run();
         }
 
         private draw(){
             this.clear();
 
             let start = 0,
-                self = this,
                 during = this.options.duration;
             let _run = function() {
                 start++;
-                self.drawBezier({
+                this.drawWave({
                     start:{
                         x:0,
-                        y:self.height
+                        y:this.height
                     },
                     ctrl:[{
                         x:easeInOut(start,0, 200,during),
@@ -77,20 +78,20 @@ const Wave = (($)=> {
                         y: easeInOut(start,500,100,during)
                     }],
                     end:{
-                        x:self.width,
-                        y:self.height
+                        x:this.width,
+                        y:this.height
                     }
                 });
 
                 if (start < during) requestAnimationFrame(_run);
-            };
+            }.bind(this);
             _run();
         }
 
         /**
          * 绘制贝塞尔闭合曲线
          */
-        private drawBezier(ctrls:{}){
+        private drawWave(ctrls:{}){
             let ctx = this.context;
             let {start,ctrl,end} = ctrls;
 

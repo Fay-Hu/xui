@@ -1,0 +1,3 @@
+.resizable-right { width:10px; height:100%; position:absolute; top:0; right:0; cursor:e-resize; }
+.resizable-bottom { width:100%; height:10px; position:absolute; left:0; bottom:0; cursor:n-resize; }
+.resizable-right-bottom { width:20px; height:20px; position:absolute; right:0; bottom:0; cursor:nw-resize; }

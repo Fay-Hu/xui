@@ -1,0 +1,24 @@
+.grid{
+    height: 600px;
+}
+.stage{
+    height: 100%;
+    width: 100%;
+}
+.dot{
+    stroke: #5ec1ff;
+    fill:none;
+    stroke-width:1;
+    animation:dotAni ease-out .5s;
+}
+
+@keyframes dotAni {
+    from{
+        opacity: 0;
+        //transform: scale(0.5);
+        //transform: rotate(-45deg);
+    }
+    to{
+        //transform: scale(1.5);
+    }
+}
